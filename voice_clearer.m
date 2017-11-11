@@ -1,0 +1,12 @@
+[raw, fsn] = audioread('Ç¿ÔëÉùÒôÆµ1.wma');
+[s, fss] = audioread('ÈõÔëÉùÒôÆµ1.wma');
+N = length(raw);
+raw = raw(:,1);
+s = s(:,1);
+figure(1);
+subplot(2,1,1);
+plot(abs(fft(raw, N)));
+subplot(2,1,2);
+plot(abs(fft(s, N)));
+figure(2);
+plot(s);
