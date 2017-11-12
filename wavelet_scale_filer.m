@@ -3,7 +3,7 @@ function [ res ] = wavelet_scale_filer( signal, yita, wave )
 if nargin < 3
     wave = 'db4';
     if nargin==1
-        yita = 0.85;
+        yita = 0.9;
     end
 end
 start_layer = 3;
@@ -37,12 +37,12 @@ for i=1:layers
         start = (k-1)*shift;
         detect(i,k)=mean(corr(i,start+1:start+lamda)); %什么是最佳的判定方案？
     end
-%     subplot(layers,1,i);
-%     x=plot(detect(i, :));
-%     x.LineWidth=3;
+    subplot(layers,1,i);
+    x=plot(detect(i, :));
+    x.LineWidth=3;
 end
 filter = zeros(layers,N);
-expand=7;
+expand=5;
 for i=1:layers
     k=expand+1;
     while k<=steps-expand
