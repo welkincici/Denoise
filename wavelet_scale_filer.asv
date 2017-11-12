@@ -44,18 +44,18 @@ end
 filter = zeros(layers,N);
 expand=7;
 for i=1:layers
-    k=expand+1;
-    while k<=steps-expand
+    k=11;
+    while k<=steps-10
         if detect(i,k)>yita && detect(i,k)==max(detect(i,k-expand:k+expand))
-            for ahead=1:min(30,k-expand-1)
+            for ahead=1:min(20,k-11)
                 start_index=k-ahead;
-                if detect(i,start_index)==min(detect(i,start_index-expand:start_index+expand))
+                if detect(i,start_index)==min(detect(i,start_index-7:start_index+7))
                     break;
                 end
             end
-            for back=1:min(30,steps-k-expand)
+            for back=1:min(20,steps-k-10)
                 end_index=k+back;
-                if detect(i,end_index)==min(detect(i,end_index-expand:end_index+expand))
+                if detect(i,end_index)==min(detect(i,end_index-7:end_index+7))
                     break;
                 end
             end
